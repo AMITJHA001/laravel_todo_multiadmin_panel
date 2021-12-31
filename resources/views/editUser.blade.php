@@ -11,7 +11,6 @@
 
 <body>
     <div class="container">
-        {{$userData}}
         <div class="row mt-5">
             <div class="row">
                 <h3 class="text-center">Edit User</h3>
@@ -30,10 +29,11 @@
                 </div>
                 @endif
             </div>
-        <form action="/upload" method="POST" enctype="multipart/form-data">
+        <form action="/updateUserDetails" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
                 <label class="text-label">Name:</label>
+                <input class="form-control" type="hidden" name="id" value="{{$id}}">
                 <input class="form-control" type="text" name="name" value="{{$userData->name}}">
             </div>
 
@@ -44,7 +44,7 @@
             </div>
 
             <div class="form-group">
-                <label class="text-label">Password:</label>
+                <label class="text-label">New Password:</label>
                 <input class="form-control" type="text" name="password">
                 </label>
             </div>
@@ -56,6 +56,9 @@
             </div>
 
             <div class="form-group">
+                <div>
+                    <img style="width:250px; height:200px; margin-top:15px;" src="{{ asset('storage/src/images/'.$userData->avatar) }}" alt="" />
+                </div>
                 <label class="text-label">Upload Iamges:</label>
                 <input class="form-control " type="file" name="image">
                 <input class="mt-3 btn btn-primary" type="submit" name="upload">

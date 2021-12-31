@@ -21,3 +21,5 @@ Route::get('/',  [UserController::class, 'index']);
 Route::post('/upload', [UserController::class, 'CreateUser']);
 
 Route::get('/editUser/{id}', [UserController::class, 'getUserData']);
+
+Route::Post('/updateUserDetails', [UserController::class, 'UpdateUser']);
